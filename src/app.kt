@@ -1,18 +1,14 @@
-open class Animal {
-    open val image = ""
-    open val food = ""
-    open val habitat = ""
+abstract class Animal {
+    abstract val image : String
+    abstract val food : String
+    abstract val habitat : String
     val hunger = 10
 
 
+   abstract fun makeNoise()
 
-   open fun makeNoise() {
-        println("The Animal is making a noise")
-    }
+    abstract fun eat()
 
-    open fun eat(){
-        println("The Animal is eating")
-    }
 
     open fun roam(){
         println("The Animal is roaming")
@@ -29,8 +25,9 @@ class Hippo : Animal() {
     override val food = "grass"
     override var habitat = "water"
 
+
     override fun makeNoise() {
-       println("Grunt! Grunt!")
+        println("Grunt! Grunt!")
     }
 
     override fun eat() {
@@ -38,7 +35,7 @@ class Hippo : Animal() {
     }
 }
 
-open class Canine : Animal() {
+abstract class Canine : Animal() {
 
     override fun roam(){
         println("The Canine is roaming ")
