@@ -15,12 +15,19 @@ class Contest<T: Pet>(var vet : Veterinary<in T>){
         scores.put(contestant,score)
     }
 
-    fun getWinners() : MutableSet<T> {
+    fun getWinners() : Set<T> {
         val winners = mutableSetOf<T>()
        val highScore = scores.values.max()
         for((x, score) in scores){
             if (score == highScore)  winners.add(x)
         }
+        return winners
+    }
+
+    fun getWinnersLambda():Set<T> {
+        val highScore = scores.values.max()
+        val winners = scores.filter { it.value == highScore }.keys
+         winners.forEach { println("Winner is ${it.name}") }
         return winners
     }
 
